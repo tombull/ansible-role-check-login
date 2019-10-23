@@ -1,0 +1,3 @@
+---
+# The number of seconds you want to wait during connection test before failing.
+check_login_timeout: 15
