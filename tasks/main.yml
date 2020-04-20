@@ -31,7 +31,7 @@
   changed_when: false
   when:
     - check_login_connection_default is failed
-    - check_login_connection_initial_user is defined
+    - check_login_connection_initial_user is not skipped
     - check_login_connection_initial_user is failed
     - initial_password is defined
 
@@ -43,9 +43,9 @@
   changed_when: false
   when:
     - check_login_connection_default is failed
-    - check_login_connection_initial_user is defined
+    - check_login_connection_initial_user is not skipped
     - check_login_connection_initial_user is failed
-    - check_login_connection_initial_password is defined
+    - check_login_connection_initial_password is not skipped
     - check_login_connection_initial_password is failed
     - initial_user is defined
     - initial_password is defined
@@ -55,7 +55,7 @@
   set_fact:
     desired_user: "{{ ansible_user }}"
   when:
-    - check_login_connection_initial_user is defined
+    - check_login_connection_initial_user is not skipped
     - check_login_connection_initial_user is succeeded
     - initial_user is defined
 
@@ -68,7 +68,7 @@
   set_fact:
     desired_user: "{{ ansible_user }}"
   when:
-    - check_login_connection_initial_user_and_password is defined
+    - check_login_connection_initial_user_and_password is not skipped
     - check_login_connection_initial_user_and_password is succeeded
     - initial_user is defined
 
@@ -77,7 +77,7 @@
   set_fact:
     ansible_user: "{{ initial_user }}"
   when:
-    - check_login_connection_initial_user is defined
+    - check_login_connection_initial_user is not skipped
     - check_login_connection_initial_user is succeeded
     - initial_user is defined
 
@@ -87,7 +87,7 @@
     ansible_ssh_pass: "{{ initial_password }}"
     ansible_sudo_pass: "{{ initial_password }}"
   when:
-    - check_login_connection_initial_password is defined
+    - check_login_connection_initial_password is not skipped
     - check_login_connection_initial_password is succeeded
     - initial_password is defined
 
@@ -98,7 +98,7 @@
     ansible_ssh_pass: "{{ initial_password }}"
     ansible_sudo_pass: "{{ initial_password }}"
   when:
-    - check_login_connection_initial_user_and_password is defined
+    - check_login_connection_initial_user_and_password is not skipped
     - check_login_connection_initial_user_and_password is succeeded
     - initial_user is defined
     - initial_password is defined
