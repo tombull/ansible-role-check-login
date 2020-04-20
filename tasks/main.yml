@@ -59,6 +59,10 @@
     - check_login_connection_initial_user is succeeded
     - initial_user is defined
 
+- name: Debug
+  debug:
+    var: check_login_connection_initial_user
+
 - name: If connection required change of user and password, set desired_user
   delegate_to: localhost
   set_fact:
